@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  express_server:
+    build: ./
+    ports:
+      - 19093:19093
+    volumes:
+      - ./backend/:/backend
+    networks:
+      - redis
+    depends_on:
+      - db_server
+    command: "npm start"
+
+  db_server:
+    image: "redis:latest"
+
+    ports:
+      - "6379:6379"
+    hostname: "redis-server"
+    networks:
+      - redis
+    command: ["redis-server", "--appendonly", "yes"]
+
+networks:
+  redis:
+    driver: bridge
