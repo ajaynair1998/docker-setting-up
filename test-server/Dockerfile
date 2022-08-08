@@ -10,7 +10,7 @@ COPY . /usr/src/
 
 RUN npm install .
 
-EXPOSE 8000
+# EXPOSE 8000
 
 # CMD ["npm", "run", "start:docker"]
-CMD ["npm","start"]
+CMD ["node","./dist/server.js"]
