@@ -49,7 +49,8 @@ services:
   test-server-01:
     build: ./test-server
     # ports:
-    #   - "8000:8000"
+    # - "19000-24000"
+    # - "8000:8000"
     # - "19000-24000:19000-24000"
     hostname: server
     networks:
