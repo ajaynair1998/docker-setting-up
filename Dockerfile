@@ -13,7 +13,7 @@ COPY ./backend/package*.json ./
 RUN npm install
  
 # copy the source code to the Docker image
-COPY ./backend .
+COPY ./ .
  
 # expose the port where the app will listen to
 EXPOSE 19093

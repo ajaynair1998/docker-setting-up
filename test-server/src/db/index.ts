@@ -1,15 +1,15 @@
-let { createClient } = require("redis");
+import { createClient } from "redis";
 
-const client = createClient({ socket: { host: "redis" } });
+const client = createClient();
 
-(async () => {
+(async (): Promise<any> => {
 	try {
 		client.on("error", (err) => console.log("Redis Client Error", err));
 		await client.connect();
 		console.log("\x1b[32m%s\x1b[0m", "Connected to Redis");
-	} catch (err) {
+	} catch (err: any) {
 		console.log("\x1b[31m%s\x1b[0m", "Failed to syncronize");
 		console.log(err);
 	}
 })();
-module.exports = { client };
+export { client as database };
