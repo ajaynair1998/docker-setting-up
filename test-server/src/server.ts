@@ -29,7 +29,7 @@ const SCC_STATE_SERVER_PORT = process.env.SCC_STATE_SERVER_PORT || 7777;
 const SCC_MAPPING_ENGINE = process.env.SCC_MAPPING_ENGINE || undefined;
 const SCC_CLIENT_POOL_SIZE = process.env.SCC_CLIENT_POOL_SIZE || undefined;
 const SCC_AUTH_KEY = process.env.SCC_AUTH_KEY || undefined;
-const SCC_INSTANCE_IP = process.env.SCC_INSTANCE_IP || "broker" || "127.0.0.1";
+const SCC_INSTANCE_IP = process.env.SCC_INSTANCE_IP || "server" || "127.0.0.1";
 const SCC_INSTANCE_IP_FAMILY = process.env.SCC_INSTANCE_IP_FAMILY || undefined;
 const SCC_STATE_SERVER_CONNECT_TIMEOUT =
 	Number(process.env.SCC_STATE_SERVER_CONNECT_TIMEOUT) || undefined;
