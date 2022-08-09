@@ -1,6 +1,6 @@
 FROM node:alpine
 
-LABEL maintainer="Jonathan Gros-Dubois"
+LABEL maintainer="Ajay Nair"
 LABEL version="16.0.3"
 LABEL description="Docker file for SocketCluster with support for clustering."
 
