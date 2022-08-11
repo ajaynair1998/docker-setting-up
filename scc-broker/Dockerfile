@@ -10,6 +10,6 @@ COPY . /usr/src/
 
 RUN npm install .
 
-# EXPOSE 8888
+EXPOSE 8888
 
 CMD ["npm", "start"]
