@@ -4,3 +4,7 @@ killall Docker - if stuck
 docker-compose --verbose up --build     --> for building container again without using the same container again
 
 AWS linux ami- ami-0ff89c4ce7de192ea
+
+
+**** you dont need to change to public ip in instance ip variable in worker
+just keep it as localhost or 127.0.0.1
