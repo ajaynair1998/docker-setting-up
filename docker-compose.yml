@@ -34,23 +34,23 @@ services:
     # depends_on:
     #   - scc-state-01
     command: "npm start"
-  express_server:
-    build: ./
-    ports:
-      - 19093:19093
-      # - "19000-24000:19000-24000"
-    volumes:
-      - ./backend/:/backend
-    networks:
-      - redis
-    depends_on:
-      - db_server
-    command: "npm start"
+  # express_server:
+  #   build: ./
+  #   ports:
+  #     - 19093:19093
+  #     # - "19000-24000:19000-24000"
+  #   volumes:
+  #     - ./backend/:/backend
+  #   networks:
+  #     - redis
+  #   depends_on:
+  #     - db_server
+  #   command: "npm start"
   test-server-01:
     build: ./test-server
-    # ports:
-    # - "19000-24000"
-    # - "8000:8000"
+    ports:
+      # - "19000-24000"
+      - "80:8000"
     # - "19000-24000:19000-24000"
     hostname: server
     networks:
