@@ -10,18 +10,18 @@ services:
     networks:
       - redis
     command: ["redis-server", "--appendonly", "yes"]
-  scc-state-01:
-    build: ./scc-state
-    ports:
-      - "7777:7777"
-    hostname: state
-    networks:
-      - state
-      - server
-      - broker
-    depends_on:
-      - db_server
-    command: "npm start"
+  # scc-state-01:
+  #   build: ./scc-state
+  #   ports:
+  #     - "7777:7777"
+  #   hostname: state
+  #   networks:
+  #     - state
+  #     - server
+  #     - broker
+  #   depends_on:
+  #     - db_server
+  #   command: "npm start"
   scc-broker-01:
     build: ./scc-broker
     # ports:
@@ -31,8 +31,8 @@ services:
     networks:
       - state
       - server
-    depends_on:
-      - scc-state-01
+    # depends_on:
+    #   - scc-state-01
     command: "npm start"
   express_server:
     build: ./

@@ -11,6 +11,7 @@ COPY . /usr/src/
 RUN npm install .
 
 EXPOSE 19000-24000
+EXPOSE 8000
 
 # CMD ["npm", "run", "start:docker"]
 CMD ["node","./dist/server.js"]

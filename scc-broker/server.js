@@ -9,6 +9,8 @@ const url = require("url");
 const express = require("express");
 
 const ip = require("./ip.json");
+const { getPublicIp } = require("./helpers");
+let ip = getPublicIp;
 console.log("🚀 ~ file: server.js ~ line 12 ~ ip", ip);
 
 const DEFAULT_PORT = 8888;
