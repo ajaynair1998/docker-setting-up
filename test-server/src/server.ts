@@ -68,6 +68,14 @@ expressApp.use(serveStatic(path.resolve(__dirname, "public")));
 expressApp.get("/health-check", (req, res) => {
 	res.status(200).send("OK");
 });
+let randomRooms: any = [];
+for (let i = 2; i < 20; i++) {
+	let currentRoomId = "room-" + `${i}` + v4();
+	randomRooms.push(currentRoomId);
+}
+expressApp.get("/available-rooms", (req, res) => {
+	res.status(200).json({ rooms: randomRooms });
+});
 
 // HTTP request handling loop.
 (async () => {
@@ -146,7 +154,7 @@ if (SCC_STATE_SERVER_HOST) {
 
 (async () => {
 	for (let i = 2; i < 20; i++) {
-		let currentRoomId = "room-" + `${i}` + v4();
+		let currentRoomId = randomRooms[i - 2];
 		console.log("🚀 starting room ", currentRoomId);
 
 		gameController.main({
