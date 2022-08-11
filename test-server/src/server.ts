@@ -11,6 +11,8 @@ import { SCCBrokerClientOptions } from "scc-broker-client";
 import socketConnectionController from "./controllers/SocketConnectionController";
 import gameController from "./controllers/gameController";
 import { roomId } from "./helpers";
+import { default as ip } from "./ip.json";
+console.log("🚀 ~ file: server.ts ~ line 15 ~ ip", ip.ip);
 
 const ENVIRONMENT = process.env.ENV || "dev";
 const SOCKETCLUSTER_PORT = process.env.SOCKETCLUSTER_PORT || 8000;
@@ -22,14 +24,15 @@ const SOCKETCLUSTER_LOG_LEVEL = process.env.SOCKETCLUSTER_LOG_LEVEL || 3;
 const SCC_INSTANCE_ID = v4();
 const SCC_STATE_SERVER_HOST =
 	process.env.SCC_STATE_SERVER_HOST ||
-	"state" ||
-	"localhost" ||
-	"18.141.187.151";
+	// "state" ||
+	// "localhost" ||
+	"18.136.100.13";
 const SCC_STATE_SERVER_PORT = process.env.SCC_STATE_SERVER_PORT || 7777;
 const SCC_MAPPING_ENGINE = process.env.SCC_MAPPING_ENGINE || undefined;
 const SCC_CLIENT_POOL_SIZE = process.env.SCC_CLIENT_POOL_SIZE || undefined;
 const SCC_AUTH_KEY = process.env.SCC_AUTH_KEY || undefined;
-const SCC_INSTANCE_IP = process.env.SCC_INSTANCE_IP || "server" || "127.0.0.1";
+const SCC_INSTANCE_IP =
+	process.env.SCC_INSTANCE_IP || ip.ip || "127.0.0.1" || "server";
 const SCC_INSTANCE_IP_FAMILY = process.env.SCC_INSTANCE_IP_FAMILY || undefined;
 const SCC_STATE_SERVER_CONNECT_TIMEOUT =
 	Number(process.env.SCC_STATE_SERVER_CONNECT_TIMEOUT) || undefined;
@@ -141,8 +144,8 @@ if (SCC_STATE_SERVER_HOST) {
 }
 
 (async () => {
-	for (let i = 2; i < 5; i++) {
-		let currentRoomId = "room-" + `${i}`;
+	for (let i = 2; i < 20; i++) {
+		let currentRoomId = "room-" + `${i}` + v4();
 		console.log("🚀 starting room ", currentRoomId);
 
 		gameController.main({

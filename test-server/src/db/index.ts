@@ -1,6 +1,6 @@
 import { createClient } from "redis";
 
-const client = createClient({ socket: { host: "redis" } });
+const client = createClient({ socket: { host: "localhost" } });
 
 (async (): Promise<any> => {
 	try {

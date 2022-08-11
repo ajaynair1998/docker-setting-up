@@ -8,12 +8,16 @@ const packageVersion = require("./package.json").version;
 const url = require("url");
 const express = require("express");
 
+const ip = require("./ip.json");
+console.log("🚀 ~ file: server.js ~ line 12 ~ ip", ip);
+
 const DEFAULT_PORT = 8888;
 const PORT = Number(process.env.SCC_BROKER_SERVER_PORT) || DEFAULT_PORT;
 const SCC_INSTANCE_ID = uuid.v4();
-const SCC_STATE_SERVER_HOST = "state" || "localhost" || "18.141.187.151";
+const SCC_STATE_SERVER_HOST = "state" || "localhost" || "18.136.100.13";
 const SCC_STATE_SERVER_PORT = Number(process.env.SCC_STATE_SERVER_PORT) || 7777;
-const SCC_INSTANCE_IP = process.env.SCC_INSTANCE_IP || "broker" || "localhost";
+const SCC_INSTANCE_IP =
+	process.env.SCC_INSTANCE_IP || ip.ip || "localhost" || "broker";
 const SCC_INSTANCE_IP_FAMILY = process.env.SCC_INSTANCE_IP_FAMILY || "IPv4";
 const SCC_AUTH_KEY = process.env.SCC_AUTH_KEY || null;
 const RETRY_DELAY = Number(process.env.SCC_BROKER_SERVER_RETRY_DELAY) || 2000;
