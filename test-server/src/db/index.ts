@@ -2,7 +2,7 @@ import { createClient } from "redis";
 
 const client = createClient({
 	socket: {
-		host: "redis",
+		host: "redis-server-cluster-001.z8utju.0001.apse1.cache.amazonaws.com",
 	},
 });
 
