@@ -1,4 +1,5 @@
 import http from "http";
+import cors from "cors";
 import eetase from "eetase";
 import socketClusterServer from "socketcluster-server";
 import express from "express";
@@ -55,6 +56,7 @@ let httpServer = eetase(http.createServer());
 let agServer = socketClusterServer.attach(httpServer, agOptions);
 
 let expressApp = express();
+expressApp.use(cors());
 if (ENVIRONMENT === "dev") {
 	// Log every HTTP request. See https://github.com/expressjs/morgan for other
 	// available formats.
