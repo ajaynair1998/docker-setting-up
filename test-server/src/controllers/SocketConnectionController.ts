@@ -3,6 +3,7 @@ import { database } from "../db";
 import { roomId } from "../helpers";
 import { IRoom } from "../helpers/interfaces";
 import gameController from "./gameController";
+import { default as ip } from "../ip.json";
 
 const socketConnectionController = {
 	main: async (
@@ -84,9 +85,11 @@ const socketConnectionController = {
 				player_one_actions_available: 0,
 				player_two_actions_available: 0,
 				is_completed: false,
+				instanceIp: ip.ip,
 			};
 
-			await database.set(roomId, JSON.stringify(room));
+			await database.setEx(roomId, 500, JSON.stringify(room));
+
 			// console.log("room created");
 		} catch (err) {
 			console.log(err);

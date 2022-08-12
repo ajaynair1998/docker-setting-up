@@ -18,6 +18,7 @@ export interface IRoom {
 	player_one_actions_available: number;
 	player_two_actions_available: number;
 	is_completed: boolean;
+	instanceIp: string;
 }
 
 export interface IRooms {

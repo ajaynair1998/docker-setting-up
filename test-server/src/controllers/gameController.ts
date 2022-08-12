@@ -150,7 +150,8 @@ let gameController = {
 			let timeNow = currentExactTime();
 			time_list.push([timeLeft, timeNow]);
 			selectedRoom.time_elapsed = time_list;
-			await database.set(roomId, JSON.stringify(room));
+			await database.setEx(roomId, 500, JSON.stringify(room));
+
 			let timeNowAfterSaving = currentExactTime();
 			await params.agServer.exchange.transmitPublish(roomId, {
 				data: selectedRoom,
@@ -175,7 +176,8 @@ let gameController = {
 			selectedRoom.playerOneTurn = true;
 			selectedRoom.playerTwoTurn = false;
 			selectedRoom.player_one_actions_available = 1;
-			await database.set(roomId, JSON.stringify(room));
+			await database.setEx(roomId, 500, JSON.stringify(room));
+
 			await params.agServer.exchange.transmitPublish(roomId, {
 				data: selectedRoom,
 			});
@@ -200,7 +202,8 @@ let gameController = {
 			selectedRoom.playerTwoTurn = true;
 			selectedRoom.player_two_actions_available = 1;
 
-			await database.set(roomId, JSON.stringify(room));
+			await database.setEx(roomId, 500, JSON.stringify(room));
+
 			await params.agServer.exchange.transmitPublish(roomId, {
 				data: selectedRoom,
 			});
@@ -238,7 +241,7 @@ let gameController = {
 						maxPlayerDetails;
 					delete selectedRoom.playersAvailable[idOfPlayerWithMaxPoints];
 
-					await database.set(roomId, JSON.stringify(room));
+					await database.setEx(roomId, 500, JSON.stringify(room));
 				} else {
 					return;
 				}
@@ -257,7 +260,7 @@ let gameController = {
 						maxPlayerDetails;
 					delete selectedRoom.playersAvailable[idOfPlayerWithMaxPoints];
 
-					await database.set(roomId, JSON.stringify(room));
+					await database.setEx(roomId, 500, JSON.stringify(room));
 				} else {
 					return;
 				}
@@ -286,7 +289,7 @@ let gameController = {
 			let selectedRoom: IRoom = room;
 			selectedRoom.is_completed = true;
 
-			await database.set(roomId, JSON.stringify(room));
+			await database.setEx(roomId, 500, JSON.stringify(room));
 
 			await params.agServer.exchange.transmitPublish(roomId, {
 				data: selectedRoom,

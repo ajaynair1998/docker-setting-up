@@ -13,6 +13,7 @@ import socketConnectionController from "./controllers/SocketConnectionController
 import gameController from "./controllers/gameController";
 import { roomId } from "./helpers";
 import { default as ip } from "./ip.json";
+import roomController from "./controllers/roomController";
 console.log("🚀 ~ file: server.ts ~ line 15 ~ ip", ip.ip);
 
 const ENVIRONMENT = process.env.ENV || "dev";
@@ -76,6 +77,10 @@ for (let i = 2; i < 20; i++) {
 }
 expressApp.get("/available-rooms", (req, res) => {
 	res.status(200).json({ rooms: randomRooms });
+});
+
+expressApp.get("/all-rooms", async (req, res) => {
+	await roomController.get(req, res);
 });
 
 // HTTP request handling loop.
