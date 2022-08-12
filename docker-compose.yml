@@ -28,6 +28,8 @@ services:
     # - "8888:8888"
     # - "19000-24000:19000-24000"
     hostname: broker
+    ports:
+      - 8888:8888
     networks:
       - state
       - server
