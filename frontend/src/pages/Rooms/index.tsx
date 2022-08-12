@@ -33,7 +33,7 @@ const Rooms = () => {
 
 	const getAllRoomDetails = async () => {
 		try {
-			let { data } = await axios.get(`http://${ip[0]}:8000/all-rooms`);
+			let { data } = await axios.get(`http://${ip[2]}:80/all-rooms`);
 			let roomDetails: any = data.data.dbData;
 
 			let instanceIp: string = data.data.ip;
@@ -80,7 +80,7 @@ const Rooms = () => {
 							signInAsPlayerOne={signInAsPlayerOne}
 							signInAsPlayerTwo={signInAsPlayerTwo}
 							roomId={roomData.id}
-							instanceIp={instanceIp}
+							instanceIp={roomData.instanceIp}
 							playerOneId={roomData.playerOneId}
 							playerTwoId={roomData.playerTwoId}
 							timer={roomData.timer}

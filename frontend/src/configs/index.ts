@@ -21,8 +21,8 @@ export const createSocket = (room?: string) => {
 };
 
 export const socketClusterSocket = SocketClusterClient.create({
-	hostname: ip[0],
-	port: 8000,
+	hostname: ip[2],
+	port: 80,
 });
 
 export interface IState extends Omit<Location, "state"> {

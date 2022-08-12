@@ -9,8 +9,8 @@ function App() {
 	return (
 		<div className="App">
 			<Routes>
-				<Route path="/" element={<Lobby />} />
-				<Route path="/rooms" element={<Rooms />} />
+				{/* <Route path="/" element={<Lobby />} /> */}
+				<Route path="/" element={<Rooms />} />
 
 				<Route path="/player-one" element={<PlayerOne />} />
 				<Route path="/player-two" element={<PlayerTwo />} />
