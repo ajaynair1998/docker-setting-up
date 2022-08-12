@@ -9,7 +9,13 @@ WORKDIR /usr/src/
 COPY . /usr/src/
 
 RUN npm install .
-
+# RUN sed -i 's/\r$//' ./start.sh && \  
+#         chmod +x ./start.sh
+RUN node ./startup.js
 # EXPOSE 8888
 
+
 CMD ["npm", "start"]
+# CMD ['sh', "./start.sh"]
+
+# CMD ["ls"]
